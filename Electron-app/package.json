@@ -4,7 +4,9 @@
   "description": "lightweight manager built for braiins, open source",
   "main": "build/index.js",
   "postinstall": "electron-builder install-app-deps",
-  "homepage":"https://github.com/camicasii/braiins-desktop--app.git",
+  "homepage":"https://github.com/camicasii/mielikki-desktop-app.git",
+  "author": {"name": "camicasii","url": "https://camicasii.xyz/","email": "camicasii@hotmail.com"},
+  "repository": {"url": "https://github.com/camicasii/mielikki-desktop-app.git"},
   "scripts": {
     "start": "tsc && cross-env DEV=DEV NODE_ENV=production electron build/index.js",    
     "dev2": "tsc && cross-env DEV=NODEV  electron build/index.js",
@@ -47,8 +49,7 @@
     "miner",
     "ASIC",
     "SHA256"
-  ],
-  "author": "camicasii@hotmail.com",
+  ],  
   "license": "ISC",
   "dependencies": {
     "@types/electron-devtools-installer": "^2.2.0",
