@@ -1,0 +1,66 @@
+{
+  "name": "mielikki_search_app",
+  "version": "1.0.0",
+  "description": "lightweight manager built for braiins, open source",
+  "main": "build/index.js",
+  "postinstall": "electron-builder install-app-deps",
+  "homepage":"https://github.com/camicasii/braiins-desktop--app.git",
+  "scripts": {
+    "start": "tsc && cross-env DEV=DEV NODE_ENV=production electron build/index.js",    
+    "dev2": "tsc && cross-env DEV=NODEV  electron build/index.js",
+    "pack": "tsc && cross-env DEV=NODEV  electron-builder --dir",
+    "distlinux": "cross-env DEV=NODEV  electron-builder -l",
+    "distwin32": "cross-env DEV=NODEV  electron-builder -w",
+    "dist": "cross-env DEV=NODEV  electron-builder -lw"
+  },
+  "build": {
+    "appId": "camicasii.mielikki.app",
+    "productName": "Mielikki Search App",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*",
+      "src/resource/icon2.ico"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "win":{
+      "target":[{ "target": "nsis",
+          "arch": [
+            "ia32",
+            "x64"         
+          ]}],
+        "icon":"src/resource/icon2.ico"
+    },
+    "linux":{
+      "maintainer":"camicasii.xyz",
+      "target":["AppImage","deb"],
+      "icon":"src/resource/logo512.png",
+      "category":"Utility"
+
+    }
+
+  },
+  "keywords": [
+    "braiins",
+    "antminer",
+    "miner",
+    "ASIC",
+    "SHA256"
+  ],
+  "author": "camicasii@hotmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "@types/electron-devtools-installer": "^2.2.0",
+    "@types/express": "^4.17.8",
+    "@types/node": "^14.0.25",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "electron": "^10.0.0-beta.25",
+    "electron-builder": "^22.8.0",
+    "electron-devtools-installer": "^3.1.1",
+    "electron-reload": "^1.5.0"
+  }
+}

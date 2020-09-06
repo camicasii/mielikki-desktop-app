@@ -1,0 +1,13 @@
+
+body{
+    background-color: azure;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    align-items: center;
+}
+span{
+    color: chocolate;
+}

@@ -1,0 +1,68 @@
+html{background-color: darkgray;}
+
+
+body ,html,#root,.App{
+  min-width: 600px;
+  min-height:700px;
+  height: 100%;
+}
+
+
+.App{
+  background-color: #f0e8f7;
+}
+
+a.btn-floating-camicasii{
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.scanner{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height:100%;
+}
+
+.camicasii-panel{
+  
+  display: flex;
+  position: sticky;
+  justify-content: space-around;
+  
+
+}
+.camicasii-show{
+
+
+}
+.camicasii-scanner{
+  align-self: center;
+
+}
+
+.camicasii-show div.card{
+  width: 8rem;   
+  color: purple; 
+  
+}
+
+#Thtotal{
+  font-size: small;
+}
+
+button.btc-icon{
+  display: flex;
+  justify-content: center;
+  
+}
+
+.btc-item{
+  align-self: center;
+}
+
+div.raw.tool{
+ position: fixed; 
+}
