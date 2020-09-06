@@ -8,7 +8,7 @@ class Scan {
       b.push("");
       const subnet = b.join(".");
       let ips = [];
-      for (let i = 30; i < 36; i++) {
+      for (let i = 1; i < 256; i++) {
         const ip = subnet + i;
         try {
           const element = await ping(ip);

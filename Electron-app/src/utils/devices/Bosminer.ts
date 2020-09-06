@@ -39,8 +39,8 @@ process.on('uncaughtException',()=>rej(""))
     setTimeout(()=>{        
         this.isTimeout=true
         this.client.end()        
-        rej({error:true})
-    },200)
+        //rej({error:true})
+    },300)
 
     this.client.on('connect',()=>{        
         this.client.write(command)    
