@@ -38,7 +38,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "BROWSER=none NODE_ENV='' yarn start",
+    "dev": "BROWSER=none NODE_ENV='asdasd' yarn start",
     "dev2": "concurrently \"BROWSER=none DEV=true  yarn start\" \"wait-on http://localhost:3000 && electron ../backend/build/index.js\""
   },
   "eslintConfig": {
