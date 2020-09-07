@@ -7,8 +7,13 @@ import modal from "./utils/modal";
 import modalDeveloper from "./utils/modalDeveloper";
 import addExtension from "./utils/addExtension";
 
+//electron-prevent-multiple-instances
+const gotTheLock = app.requestSingleInstanceLock()
+if(!gotTheLock){
+    app.quit()
+}
 
-
+//electron-prevent-multiple-instances-end
 
 let MainWindows:BrowserWindow;
 function createWindows() {    
@@ -46,29 +51,9 @@ app.whenReady().then(async()=>{
 scanEvent()
 discoverEvent()
 
-const opt:NotificationConstructorOptions={
-    title:"Error",
-    body:"Something is wrong",
-    timeoutType:"never",
-    urgency:"critical",
-    sound:join(__dirname,'resource/ALERT_Error.wav'),
-    icon:nativeImage.createFromPath( join(__dirname, 'resource/icon.png'))
-}
-const notification =new Notification(opt)
-ipcMain.on('notification',(event,arg)=>{
-    notification.body =`Something is wrong, IP ${arg}`
-    notification.show()
-})  
-    
-ipcMain.on('modal',(event,arg)=>{
-    modal(MainWindows,arg)
-})    
-    
-ipcMain.on('modal-developer',(event,arg)=>{
-    modalDeveloper(MainWindows)
-})  
-try{
-    
+
+
+
     
     
 if(process.env.DEV=="DEV"){
@@ -77,18 +62,79 @@ if(process.env.DEV=="DEV"){
 }
 else
 createWindows()  
+
+
+
+
+    
+
+
+
+
+event_ext()
+
+try{   
+
+
     
     app.on('activate',()=>{
         if(BrowserWindow.getAllWindows().length===0)createWindows()        
     })
     app.on('window-all-closed',()=>{
         if(process.platform!=='darwin')app.quit()
+
+        app.quit()
+        
     })
+    //electron-prevent-multiple-instances
+    app.on('second-instance',(event,commandLine, workingDirectory)=>{
+        
+        if(MainWindows){
+            if(MainWindows.isMinimized())MainWindows.restore()
+            MainWindows.focus()
+        }
+    })
+    //electron-prevent-multiple-instances-end
+    
+
+
 }catch (error){
     console.log('An error occurred: ', error)
 }
 })
 
 
+function noty() {
+    const opt:NotificationConstructorOptions={
+        title:"Error",
+        body:"Something is wrong",
+        timeoutType:"never",
+        urgency:"critical",
+        sound:join(__dirname,'resource/ALERT_Error.wav'),
+        icon:nativeImage.createFromPath( join(__dirname, 'resource/icon.png'))
+    }
+    return new Notification(opt)
+    
+}
 
+
+
+function event_ext() {
+    const notification =noty()
+
+
+    ipcMain.on('notification',(event,arg)=>{
+        notification.body =`Something is wrong, IP ${arg}`
+        notification.show()
+    })  
+        
+    ipcMain.on('modal',(event,arg)=>{
+        modal(MainWindows,arg)
+    })    
+        
+    ipcMain.on('modal-developer',(event,arg)=>{
+        modalDeveloper(MainWindows)
+    })  
+ 
+}
 
