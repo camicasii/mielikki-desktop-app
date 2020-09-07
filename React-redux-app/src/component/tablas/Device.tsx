@@ -24,7 +24,7 @@ export default function Device({ data, ip }) {
     
     if(check && error===0)
     error=setTimeout(() => {
-      ipcRenderer.send('notification','192.168.0.30')
+      ipcRenderer.send('notification',ip)
       error=0
     }, 5000);
     else if(error!==0 && !check) clearTimeout(error)
