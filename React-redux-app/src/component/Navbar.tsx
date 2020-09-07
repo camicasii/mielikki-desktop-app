@@ -1,22 +1,19 @@
-import React,{useState,useEffect} from 'react'
-import {useSelector } from 'react-redux'
+import React,{useEffect} from 'react'
 import { CodeOutlined } from '@material-ui/icons';
 
 //@ts-ignore
 const ipcRenderer = window.ipcRenderer;
+let timer=0;
 export default function () {
-    const [count, setcount] = useState(0)
-    //@ts-ignore
-    const data = useSelector(state => state.devices.data)
 
     useEffect(()=>{
         
     },[])
 
-    let timer=0;
+    
 
     function developer() {        
-        if(timer==0)
+        if(timer===0)
         setTimeout(() => {
             ipcRenderer.send('modal-developer')            
             timer=0

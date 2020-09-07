@@ -5,7 +5,7 @@ import scanEvent from "./event/scanEvent";
 import discoverEvent from "./event/discoverEvent";
 import modal from "./utils/modal";
 import modalDeveloper from "./utils/modalDeveloper";
-//import addExtension from "./utils/addExtension";
+import addExtension from "./utils/addExtension";
 
 
 
@@ -72,7 +72,7 @@ try{
     
     
 if(process.env.DEV=="DEV"){
-  //await addExtension()
+  await addExtension()
     createWindows()      
 }
 else

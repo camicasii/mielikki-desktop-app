@@ -29,7 +29,7 @@ class Bosminer {
                 this.isTimeout = true;
                 this.client.end();
                 rej({ error: true });
-            }, 200);
+            }, 300);
             this.client.on('connect', () => {
                 this.client.write(command);
             });

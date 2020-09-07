@@ -1,9 +1,15 @@
 {
-  "name": "react-electron",  
+  "name": "react-electron",
   "version": "0.1.0",
   "private": true,
-  "author": {"name": "camicasii","url": "https://camicasii.xyz/","email": "camicasii@hotmail.com"},
-  "repository": {"url": "https://github.com/camicasii/mielikki-desktop-app.git"},
+  "author": {
+    "name": "camicasii",
+    "url": "https://camicasii.xyz/",
+    "email": "camicasii@hotmail.com"
+  },
+  "repository": {
+    "url": "https://github.com/camicasii/mielikki-desktop-app.git"
+  },
   "homepage": "./",
   "dependencies": {
     "@material-ui/core": "^4.11.0",

@@ -3,12 +3,13 @@ import { useSelector,useDispatch } from "react-redux";
 import { resetMyIp } from "../redux/actions/ipsActions";
 import Swal from 'sweetalert2'
 //@ts-ignore
+let time:any
 function LoaderDevices() {
   //@ts-ignore
   const ips = useSelector(state => state.ips.ips)
 const dispatch = useDispatch()
   const [error, seterror] = useState(false)
-  let time:any
+  
 
   useEffect(() => {   
     time=setTimeout(()=>{ seterror(true)

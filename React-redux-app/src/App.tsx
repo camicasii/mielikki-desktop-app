@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
-import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
-
 import {scanAuto,
   setIps,
   initIps,
@@ -9,6 +7,7 @@ import {scanAuto,
   setLocalIP,
 } from "./redux/actions/ipsActions";
 import { getData, setData } from "./redux/actions/devicesActions";
+import "./App.css";
 import Devices from "./component/tablas/Devices";
 import Navbar from "./component/Navbar";
 import CountDevices from "./component/tablas/tools/CountDevices";
@@ -55,10 +54,12 @@ function App() {
       
     
   }, []);
+
+
   useEffect(() => {    
     let time2:any
     if (ips.myip!=="")
-    time2= setTimeout(() => scanAuto(), 100);    
+    time2= setTimeout(() => dispatch(scanAuto()), 100);    
     return ()=> clearTimeout(time2);
   }, [ipsAll.myip]);
 
@@ -68,7 +69,7 @@ function App() {
     let timer:any;
     
     if (ips.length > 0 && ips.myip!=="") 
-    timer=setTimeout(() => getData(ips), 600);    
+    timer=setTimeout(() => dispatch(getData(ips)), 1000);    
 
     return ()=>clearTimeout(timer)
   }, [ipsAll.ips, data,ipsAll.myip]);

@@ -7,18 +7,19 @@ import {openBuild} from '../../redux/actions/devicesActions'
 
 //@ts-ignore
 const  ipcRenderer = window.ipcRenderer
+let error:any;
 //@ts-ignore
 export default function Device({ data, ip }) {
   const [speed, setspeed] = useState(0);
   const [RPM, setRPM] = useState("");
   const [summary, setsummary] = useState("");
   const [pool, setpool] = useState(false);
-  const [temps, settemps] = useState("");
+  const [temps, settemps] = useState("");  
 
   const [check, setcheck] = useState(false)
   const dispatch = useDispatch()
   
-  let error:any;
+  
   useEffect(() => {
     
     if(check && error===0)
@@ -39,7 +40,8 @@ export default function Device({ data, ip }) {
   useEffect(() => {
     try{    
     setcheck(false)    
-    Object.keys(data).map((key) => {           
+    if(!data['error'])
+    Object.keys(data).forEach((key) => {           
       if (key === "temps") {        
         let dummy: any = [];
         const temps_ = data[key];
@@ -114,11 +116,12 @@ export default function Device({ data, ip }) {
     });
   }
   catch{
+    /*
     setRPM("")
     setpool(false)
     settemps("")
     setspeed(0)
-    setsummary("")
+    setsummary("")*/
   }
 
   return ()=>{

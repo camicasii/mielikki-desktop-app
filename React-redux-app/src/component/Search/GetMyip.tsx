@@ -1,13 +1,11 @@
 import React from 'react'
-import { useDispatch,useSelector } from "react-redux";
-
+import { useDispatch} from "react-redux";
 import { resetMyIp,getLocalIP } from "../../redux/actions/ipsActions";
+
+let time:any;
 //@ts-ignore
 function GetMyip() {
 const dispatch = useDispatch()
-let time:any;
-//@ts-ignore
-const ipsAll = useSelector((state) => state.ips);
 
 
 //@ts-ignore

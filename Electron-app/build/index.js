@@ -19,7 +19,7 @@ const scanEvent_1 = __importDefault(require("./event/scanEvent"));
 const discoverEvent_1 = __importDefault(require("./event/discoverEvent"));
 const modal_1 = __importDefault(require("./utils/modal"));
 const modalDeveloper_1 = __importDefault(require("./utils/modalDeveloper"));
-//import addExtension from "./utils/addExtension";
+const addExtension_1 = __importDefault(require("./utils/addExtension"));
 let MainWindows;
 function createWindows() {
     const mainWindows = new electron_1.BrowserWindow({
@@ -67,7 +67,7 @@ electron_1.app.whenReady().then(() => __awaiter(void 0, void 0, void 0, function
     });
     try {
         if (process.env.DEV == "DEV") {
-            //await addExtension()
+            yield addExtension_1.default();
             createWindows();
         }
         else

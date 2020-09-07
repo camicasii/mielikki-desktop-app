@@ -1,5 +1,4 @@
-import store from "../../store";
-import { GET_IPS, ADD_IPS, INIT_IPS,ADD_MYIPS,GET_LOCAL_IPS,SET_LOCAL_IPS,IS_LOCAL_IPS ,RESET_MYIPS  } from "./types";
+import { GET_IPS, ADD_IPS, INIT_IPS,ADD_MYIPS,GET_LOCAL_IPS,SET_LOCAL_IPS,RESET_MYIPS  } from "./types";
 
 //@ts-ignore
 const ipcRenderer = window.ipcRenderer;
@@ -97,8 +96,7 @@ export const getLocalIP =() => {
   };
 };
 
-export const setLocalIP =(arg:any) => {     
-  console.log(arg);
+export const setLocalIP =(arg:any) => {       
   return {
     type: SET_LOCAL_IPS,
     payload:{currentIp:arg}

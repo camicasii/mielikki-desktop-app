@@ -29,8 +29,6 @@ export function getDeviceSingle(ip: string) {
         data = await Deviceshandle.simpleSummary(command,ip)        
         if(command=="fans")
         data = await Deviceshandle.simpleFans(command,ip)                
-
-
         //@ts-ignore
         properties[command] = data;
       

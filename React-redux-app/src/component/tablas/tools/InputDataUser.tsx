@@ -1,12 +1,9 @@
-import React,{useEffect,useState,useRef, FormEvent} from 'react'
+import React,{useState,useRef, FormEvent} from 'react'
 import { useSelector,useDispatch } from "react-redux";
 import {
-  setMyIp,scanAuto
+  setMyIp
 } from "./../../../redux/actions/ipsActions";
-
-//@ts-ignore
-const  ipcRenderer = window.ipcRenderer
-
+let timer:any =0
 export default function InputDataUser() {
     const [localIP, setlocalIP] = useState("")
     const [isEnable, setisEnable] = useState(true)
@@ -16,7 +13,7 @@ export default function InputDataUser() {
     const dispatch = useDispatch()
 
        
-    let timer:any =0
+    
     function onSubmit(e:FormEvent) {   
       e.preventDefault()          
       if(localIP!==""||timer===0)

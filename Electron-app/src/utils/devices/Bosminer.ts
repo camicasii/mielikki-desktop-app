@@ -33,20 +33,20 @@ process.on('uncaughtException',()=>rej(""))
             //@ts-ignore
     this.client.connect({
         port:this.port,
-    host:this.host
+        host:this.host
     })        
     
     setTimeout(()=>{        
         this.isTimeout=true
         this.client.end()        
-        //rej({error:true})
+        rej({error:true})
     },300)
 
     this.client.on('connect',()=>{        
         this.client.write(command)    
     })
 
-    this.client.on('data',(data)=>{        
+    this.client.on('data',(data:any)=>{        
         //const data_ =data.toString("utf-8")
         this.res=Buffer.concat([this.res,data])
         //this.res.push(data_)

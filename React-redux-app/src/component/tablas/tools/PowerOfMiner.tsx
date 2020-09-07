@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react'
-import { useSelector,useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 export default function PowerOfMiner() {
     const [Thtotal, setThtotal] = useState(0) 
@@ -8,7 +8,7 @@ export default function PowerOfMiner() {
 
 
     useEffect(()=>{          
-        if(data==undefined)
+        if(data===undefined)
         return
         let thTotal=0
         
