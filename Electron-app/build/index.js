@@ -19,12 +19,13 @@ const scanEvent_1 = __importDefault(require("./event/scanEvent"));
 const discoverEvent_1 = __importDefault(require("./event/discoverEvent"));
 const modal_1 = __importDefault(require("./utils/modal"));
 const modalDeveloper_1 = __importDefault(require("./utils/modalDeveloper"));
-const addExtension_1 = __importDefault(require("./utils/addExtension"));
-const gotTheLock = electron_1.app.requestSingleInstanceLock();
+//import addExtension from "./utils/addExtension";
 //electron-prevent-multiple-instances
+const gotTheLock = electron_1.app.requestSingleInstanceLock();
 if (!gotTheLock) {
     electron_1.app.quit();
 }
+//electron-prevent-multiple-instances-end
 let MainWindows;
 function createWindows() {
     const mainWindows = new electron_1.BrowserWindow({
@@ -52,7 +53,7 @@ electron_1.app.whenReady().then(() => __awaiter(void 0, void 0, void 0, function
     scanEvent_1.default();
     discoverEvent_1.default();
     if (process.env.DEV == "DEV") {
-        yield addExtension_1.default();
+        //await addExtension()
         createWindows();
     }
     else
@@ -76,6 +77,7 @@ electron_1.app.whenReady().then(() => __awaiter(void 0, void 0, void 0, function
                 MainWindows.focus();
             }
         });
+        //electron-prevent-multiple-instances-end
     }
     catch (error) {
         console.log('An error occurred: ', error);
